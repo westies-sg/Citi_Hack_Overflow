@@ -20,8 +20,8 @@ async function initIntraPinecone() {
     const pinecone = new PineconeClient();
 
     await pinecone.init({
-      environment: process.env.PINECONE_INTER_ENVIRONMENT ?? '',
-      apiKey: process.env.PINECONE_INTER_API_KEY ?? '',
+      environment: process.env.PINECONE_INTRA_ENVIRONMENT ?? '',
+      apiKey: process.env.PINECONE_INTRA_API_KEY ?? '',
     });
 
     return pinecone;
@@ -38,8 +38,8 @@ async function initInterPinecone() {
     const pinecone = new PineconeClient();
 
     await pinecone.init({
-      environment: process.env.PINECONE_INTRA_ENVIRONMENT ?? '',
-      apiKey: process.env.PINECONE_INTRA_API_KEY ?? '',
+      environment: process.env.PINECONE_INTER_ENVIRONMENT ?? '',
+      apiKey: process.env.PINECONE_INTER_API_KEY ?? '',
     });
 
     return pinecone;
