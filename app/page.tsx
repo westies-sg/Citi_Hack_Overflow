@@ -71,13 +71,13 @@ export default function Home() {
                         className="focus:outline-none transition-transform transform hover:scale-110"
                         onClick={() => setIsChatOpen(true)}
                     >
-                            <img src="/images/citi_bot_big.jpg" alt="Description of Image" className="w-64 h-64 lg:w-48 lg:h-48"></img>
+                            <img src="/images/citibotv2.png" alt="Description of Image" className=" w-128 h-128 lg:w-128 lg:h-128"></img>
 
                     </button>
             
                 ) : (
                     // Chat interface
-                    <div className="w-30 h-96 bg-white rounded-xl shadow-lg flex flex-col">
+                    <div className="opacity-0 animate-fadeIn w-30 h-96 bg-white rounded-xl shadow-lg flex flex-col">
                         <div className="p-4 text-center text-transparent bg-blue-600  text-white rounded-t-xl">
                             Citibot
                             <button
@@ -90,7 +90,7 @@ export default function Home() {
 
                         <div className="flex flex-col gap-8 w-full items-center flex-grow max-h-full ">
                             <form
-                                className="rounded-2xl border-purple-700 border-opacity-5  border lg:w-3/4 flex-grow flex flex-col bg-[url('/images/bg2.jpg')] bg-cover max-h-full overflow-clip w-full"
+                                className="rounded-2xl border-purple-700 border-opacity-5  border lg:w-3/4 flex-grow flex flex-col bg-white bg-cover max-h-full overflow-clip w-full"
                                 onSubmit={(e) => {
                                     e.preventDefault();
                                     handleClick();
@@ -119,7 +119,7 @@ export default function Home() {
                                                         />
                                                         <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">
                                                             <p className="text-sm font-medium text-violet-500 mb-2">
-                                                                AI assistant
+                                                                CitiChat Charlie
                                                             </p>
                                                             {message.content}
                                                             {message.links && (
@@ -179,12 +179,12 @@ export default function Home() {
                                             className="flex gap-2"
                                         >
                                             <img
-                                                src="images/assistant-avatar.png"
+                                                src="images/citi_bot.jpg"
                                                 className="h-12 w-12 rounded-full"
                                             />
                                             <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">
                                                 <p className="text-sm font-medium text-violet-500 mb-4">
-                                                    AI assistant
+                                                    CitiChat Charlie
                                                 </p>
                                                 <LoadingDots />
                                             </div>
