@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Message } from "@/types/message";
 import { Send } from "react-feather";
 import LoadingDots from "@/components/LoadingDots";
+import Link from "next/link";
 import { RiChatSmile3Fill } from "react-icons/ri";
 
 import { publicChatbot } from "./public-bot/page";
