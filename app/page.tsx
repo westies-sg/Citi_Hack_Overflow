@@ -37,10 +37,20 @@ export default function Home() {
                 alert(err);
             });
     };
-
     const formatPageName = (url: string) => {
-        // Split the URL by "/" and get the last segment
-        const pageName = url.split("/").pop();
+        // Split the URL by "/"
+        const segments = url.split("/");
+
+        // If the last segment is empty, take the second last segment
+        let pageName = segments[segments.length - 1];
+        if (!pageName && segments.length > 1) {
+            pageName = segments[segments.length - 2];
+        }
+
+        // Remove .html if it exists
+        if (pageName.endsWith(".htm")) {
+            pageName = pageName.replace(".htm", "");
+        }
 
         // Split by "-" and then join with space
         if (pageName) {
@@ -60,24 +70,25 @@ export default function Home() {
         }
     }, [history]);
     const [isChatOpen, setIsChatOpen] = useState(false); // New state to manage chat visibility
-//page design
+    //page design
     return (
-        <main className=" bg-[url('/images/citibank_bg.png')]  ">
-            <div className="absolute bottom-8 right-8">
+        <main className=" bg-[url('/images/citibank_bg.png')] min-h-screen object-contain  ">
+            <div className="absolute bottom-8 right-8 ">
                 {!isChatOpen ? (
                     // Chat bubble
-
                     <button
                         className="focus:outline-none transition-transform transform hover:scale-110"
                         onClick={() => setIsChatOpen(true)}
                     >
-                            <img src="/images/citibotv2.png" alt="Description of Image" className=" w-128 h-128 lg:w-128 lg:h-128"></img>
-
+                        <img
+                            src="/images/test3.png"
+                            alt="Description of Image"
+                            className=" object-contain"
+                        ></img>
                     </button>
-            
                 ) : (
                     // Chat interface
-                    <div className="opacity-0 animate-fadeIn w-full h-96 bg-white rounded-xl shadow-lg flex flex-col">
+                    <div className="opacity-0 animate-fadeIn w-4/5 h-96 bg-white rounded-xl shadow-lg flex flex-col">
                         <div className="p-4 text-center text-transparent bg-blue-600  text-white rounded-t-xl">
                             Citibot
                             <button
@@ -95,7 +106,6 @@ export default function Home() {
                                     handleClick();
                                 }}
                             >
-                        
                                 <div className="no-scrollbar overflow-y-auto flex flex-col gap-5 p-10 h-full">
                                     {history.map((message: Message, idx) => {
                                         const isLastMessage =
@@ -117,14 +127,21 @@ export default function Home() {
                                                             className="h-24 w-24 rounded-full "
                                                         />
                                                         <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">
-                                                            <p className="text-sm font-medium text-blue-500 mb-2">
+                                                            <p className="text-s font-medium text-blue-500 mb-2">
                                                                 CitiChat Charlie
                                                             </p>
                                                             {message.content}
                                                             {message.links && (
                                                                 <div className="mt-4 flex flex-col gap-2">
-                                                                    <p className="text-sm font-medium text-slate-500">
-                                                                        Sources:
+                                                                    <p className="text-xs font-medium text-slate-500">
+                                                                        For more
+                                                                        detailed
+                                                                        information
+                                                                        please
+                                                                        click on
+                                                                        the
+                                                                        links
+                                                                        below:
                                                                     </p>
 
                                                                     {message.links?.map(
@@ -139,7 +156,7 @@ export default function Home() {
                                                                                     key={
                                                                                         link
                                                                                     }
-                                                                                    className="block w-fit px-2 py-1 text-sm  text-blue-700 bg-blue-100 rounded"
+                                                                                    className="block w-fit px-2 py-1 text-xs  text-blue-700 bg-blue-100 rounded"
                                                                                 >
                                                                                     {formatPageName(
                                                                                         link
@@ -164,7 +181,7 @@ export default function Home() {
                                                                 : null
                                                         }
                                                     >
-                                                        <p className="text-sm font-medium text-blue-500 mb-2">
+                                                        <p className="text-s font-medium text-blue-500 mb-2">
                                                             You
                                                         </p>
                                                         {message.content}
