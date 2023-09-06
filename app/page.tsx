@@ -77,7 +77,7 @@ export default function Home() {
             
                 ) : (
                     // Chat interface
-                    <div className="opacity-0 animate-fadeIn w-30 h-96 bg-white rounded-xl shadow-lg flex flex-col">
+                    <div className="opacity-0 animate-fadeIn w-full h-96 bg-white rounded-xl shadow-lg flex flex-col">
                         <div className="p-4 text-center text-transparent bg-blue-600  text-white rounded-t-xl">
                             Citibot
                             <button
@@ -113,8 +113,8 @@ export default function Home() {
                                                         className="flex gap-2"
                                                     >
                                                         <img
-                                                            src="images/citi_bot.jpg"
-                                                            className="h-12 w-12 rounded-full"
+                                                            src="images/citi_bot.jpg "
+                                                            className="h-24 w-24 rounded-full "
                                                         />
                                                         <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">
                                                             <p className="text-sm font-medium text-blue-500 mb-2">
@@ -179,7 +179,7 @@ export default function Home() {
                                         >
                                             <img
                                                 src="images/citi_bot.jpg"
-                                                className="h-12 w-12 rounded-full"
+                                                className="h-24 w-24 rounded-full border-blue"
                                             />
                                             <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">
                                                 <p className="text-sm font-medium text-blue-500 mb-4">
