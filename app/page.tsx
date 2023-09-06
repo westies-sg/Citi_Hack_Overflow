@@ -87,10 +87,9 @@ export default function Home() {
                                 X
                             </button>
                         </div>
-
                         <div className="flex flex-col gap-8 w-full items-center flex-grow max-h-full ">
                             <form
-                                className="rounded-2xl border-purple-700 border-opacity-5  border lg:w-3/4 flex-grow flex flex-col bg-white bg-cover max-h-full overflow-clip w-full"
+                                className="rounded-2xl item-center justify-between border-none flex-grow flex flex-col bg-white bg-cover h-full overflow-clip w-full"
                                 onSubmit={(e) => {
                                     e.preventDefault();
                                     handleClick();
