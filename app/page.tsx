@@ -117,7 +117,7 @@ export default function Home() {
                                                             className="h-12 w-12 rounded-full"
                                                         />
                                                         <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">
-                                                            <p className="text-sm font-medium text-violet-500 mb-2">
+                                                            <p className="text-sm font-medium text-blue-500 mb-2">
                                                                 CitiChat Charlie
                                                             </p>
                                                             {message.content}
@@ -139,7 +139,7 @@ export default function Home() {
                                                                                     key={
                                                                                         link
                                                                                     }
-                                                                                    className="block w-fit px-2 py-1 text-sm  text-violet-700 bg-violet-100 rounded"
+                                                                                    className="block w-fit px-2 py-1 text-sm  text-blue-700 bg-blue-100 rounded"
                                                                                 >
                                                                                     {formatPageName(
                                                                                         link
@@ -164,7 +164,7 @@ export default function Home() {
                                                                 : null
                                                         }
                                                     >
-                                                        <p className="text-sm font-medium text-violet-500 mb-2">
+                                                        <p className="text-sm font-medium text-blue-500 mb-2">
                                                             You
                                                         </p>
                                                         {message.content}
@@ -182,7 +182,7 @@ export default function Home() {
                                                 className="h-12 w-12 rounded-full"
                                             />
                                             <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">
-                                                <p className="text-sm font-medium text-violet-500 mb-4">
+                                                <p className="text-sm font-medium text-blue-500 mb-4">
                                                     CitiChat Charlie
                                                 </p>
                                                 <LoadingDots />
@@ -201,7 +201,7 @@ export default function Home() {
                                                 setMessage(e.target.value)
                                             }
                                             placeholder="Type a message"
-                                            className="w-full h-full resize-none rounded-full border border-slate-900/10 bg-white pl-6 pr-24 py-[20px] text-base placeholder:text-slate-400 focus:border-violet-500 focus:outline-none focus:ring-4 focus:ring-violet-500/10 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]"
+                                            className="w-full h-full resize-none rounded-full border border-slate-900/10 bg-white pl-6 pr-24 py-[20px] text-base placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]"
                                             onKeyDown={(e) => {
                                                 if (
                                                     e.key === "Enter" &&
@@ -217,7 +217,7 @@ export default function Home() {
                                                 e.preventDefault();
                                                 handleClick();
                                             }}
-                                            className="overflow-y-hidden w-14 h-14 items-center justify-center rounded-full px-3 text-sm  bg-violet-600 font-semibold text-white hover:bg-blue-700 active:bg-blue-800 absolute right-2 bottom-2 disabled:bg-blue-100 disabled:text-blue-400"
+                                            className="overflow-y-hidden w-14 h-14 items-center justify-center rounded-full px-3 text-sm  bg-blue-600 font-semibold text-white hover:bg-blue-700 active:bg-blue-800 absolute right-2 bottom-2 disabled:bg-blue-100 disabled:text-blue-400"
                                             type="submit"
                                             aria-label="Send"
                                             disabled={!message || loading}
