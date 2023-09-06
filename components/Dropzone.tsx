@@ -46,7 +46,23 @@ const Dropzone = ({ className }: { className: any }) => {
     const file = files[0];
     if (!file) return;
 
-    console.log(file);
+    const formData = new FormData();
+
+    formData.append('file', file);
+    formData.append('folder', 'next');
+
+    fetch('/api/upsert', {
+      method: 'POST',
+
+      body: formData,
+    })
+      .then(async (res) => {
+        const r = await res.json();
+        console.log(r);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 
   return (
@@ -67,7 +83,6 @@ const Dropzone = ({ className }: { className: any }) => {
         </div>
       </div>
 
-      {/* Preview */}
       <section className='mt-10'>
         <div className='flex gap-4'>
           <h2 className='title text-3xl font-semibold'>Preview</h2>
@@ -96,8 +111,6 @@ const Dropzone = ({ className }: { className: any }) => {
                 height={100}
                 onLoad={() => {
                   URL.revokeObjectURL(file.preview);
-                  console.log('On load : ');
-                  console.log(file.preview);
                 }}
                 className='h-full w-full rounded-md object-contain'
               />
