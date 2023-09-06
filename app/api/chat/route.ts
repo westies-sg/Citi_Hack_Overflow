@@ -6,7 +6,12 @@ export async function POST(request: Request) {
     console.log(Request);
 
     const body = await request.json();
-    const question: string = body.query;
+    let translated: string = body.query;
+    // Check if the question is in Chinese
+    if (/[\u4e00-\u9fa5]/.test(translated)) {
+        translated = "请用中文回答: " + translated;
+    }
+    const question = translated;
     const history: Message[] = body.history ?? [];
     console.log(question, history);
     const res = await chain.call({

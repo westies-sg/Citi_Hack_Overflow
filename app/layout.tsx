@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
     title: "CitiBot",
     description: "Chatbot with custom knowledge base",
+    icons: "image/citi_bot.jpg",
 };
 
 export default function RootLayout({
