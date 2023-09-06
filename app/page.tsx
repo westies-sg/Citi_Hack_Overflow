@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Message } from "@/types/message";
 import { Send } from "react-feather";
 import LoadingDots from "@/components/LoadingDots";
-
+//test
 export default function Home() {
     const [message, setMessage] = useState<string>("");
     const [history, setHistory] = useState<Message[]>([
@@ -60,22 +60,25 @@ export default function Home() {
         }
     }, [history]);
     const [isChatOpen, setIsChatOpen] = useState(false); // New state to manage chat visibility
-
+//page design
     return (
-        <main className=" bg-[url('/images/citibank_bg.png')] bg-contain bg-center ">
+        <main className=" bg-[url('/images/citibank_bg.png')]  ">
             <div className="absolute bottom-8 right-8">
                 {!isChatOpen ? (
                     // Chat bubble
+
                     <button
-                        className="text-4xl h-40 w-40 text-transparent rounded-full bg-blue-600 bg-gradient-to-r from-blue-800 to-teal-500 flex items-center justify-center text-white"
+                        className="focus:outline-none transition-transform transform hover:scale-110"
                         onClick={() => setIsChatOpen(true)}
                     >
-                        Chat
+                            <img src="/images/citi_bot_big.jpg" alt="Description of Image" className="w-64 h-64 lg:w-48 lg:h-48"></img>
+
                     </button>
+            
                 ) : (
                     // Chat interface
                     <div className="w-30 h-96 bg-white rounded-xl shadow-lg flex flex-col">
-                        <div className="p-4 text-center bg-blue-600 text-white rounded-t-xl">
+                        <div className="p-4 text-center text-transparent bg-blue-600  text-white rounded-t-xl">
                             Citibot
                             <button
                                 className="float-right text-white"
@@ -85,15 +88,16 @@ export default function Home() {
                             </button>
                         </div>
 
-                        <div className="flex flex-col gap-8 w-full items-center flex-grow max-h-full">
+                        <div className="flex flex-col gap-8 w-full items-center flex-grow max-h-full ">
                             <form
-                                className="rounded-2xl border-purple-700 border-opacity-5  border lg:w-3/4 flex-grow flex flex-col bg-[url('/images/bg2.jpg')] bg-cover max-h-full overflow-clip"
+                                className="rounded-2xl border-purple-700 border-opacity-5  border lg:w-3/4 flex-grow flex flex-col bg-[url('/images/bg2.jpg')] bg-cover max-h-full overflow-clip w-full"
                                 onSubmit={(e) => {
                                     e.preventDefault();
                                     handleClick();
                                 }}
                             >
-                                <div className="overflow-y-scroll flex flex-col gap-5 p-10 h-full">
+                        
+                                <div className="no-scrollbar overflow-y-auto flex flex-col gap-5 p-10 h-full">
                                     {history.map((message: Message, idx) => {
                                         const isLastMessage =
                                             idx === history.length - 1;
@@ -198,7 +202,7 @@ export default function Home() {
                                                 setMessage(e.target.value)
                                             }
                                             placeholder="Type a message"
-                                            className="w-full h-full resize-none rounded-full border border-slate-900/10 bg-white pl-6 pr-24 py-[25px] text-base placeholder:text-slate-400 focus:border-violet-500 focus:outline-none focus:ring-4 focus:ring-violet-500/10 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]"
+                                            className="w-full h-full resize-none rounded-full border border-slate-900/10 bg-white pl-6 pr-24 py-[20px] text-base placeholder:text-slate-400 focus:border-violet-500 focus:outline-none focus:ring-4 focus:ring-violet-500/10 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]"
                                             onKeyDown={(e) => {
                                                 if (
                                                     e.key === "Enter" &&
@@ -214,7 +218,7 @@ export default function Home() {
                                                 e.preventDefault();
                                                 handleClick();
                                             }}
-                                            className="flex w-14 h-14 items-center justify-center rounded-full px-3 text-sm  bg-violet-600 font-semibold text-white hover:bg-violet-700 active:bg-violet-800 absolute right-2 bottom-2 disabled:bg-violet-100 disabled:text-violet-400"
+                                            className="overflow-y-hidden w-14 h-14 items-center justify-center rounded-full px-3 text-sm  bg-violet-600 font-semibold text-white hover:bg-blue-700 active:bg-blue-800 absolute right-2 bottom-2 disabled:bg-blue-100 disabled:text-blue-400"
                                             type="submit"
                                             aria-label="Send"
                                             disabled={!message || loading}
