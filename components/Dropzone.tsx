@@ -6,7 +6,7 @@ import { useDropzone } from 'react-dropzone';
 import { ArrowUpTrayIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import {ThreeDots} from 'react-loader-spinner';
 import Swal from 'sweetalert2'
-import folderIcon from './PDFIcon.png';
+import folderIcon from '../public/images/PDFIcon.png';
 
 const Dropzone = ({ className }: { className: any }) => {
   const[loading,setLoading]= useState(false);
