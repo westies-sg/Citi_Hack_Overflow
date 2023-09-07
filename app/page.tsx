@@ -314,6 +314,7 @@ export default function Home() {
 
                 <div className='opacity-0 animate-fadeIn w-4/5 h-96 bg-white rounded-xl shadow-lg flex flex-col'>
                   <div className='p-4 text-center text-transparent bg-blue-600  text-white rounded-t-xl'>
+                   <Link href="/upsert" className='float-left text-white'> Upsert </Link>
                     Intranet Citibot
                     <button
                       className='float-right text-white'

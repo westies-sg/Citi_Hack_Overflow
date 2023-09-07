@@ -5,21 +5,21 @@ import { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { ArrowUpTrayIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
+import folderIcon from "./PDFIcon.png";
 
 const Dropzone = ({ className }: { className: any }) => {
   const [files, setFiles] = useState<any[]>([]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
-    if (acceptedFiles.length) {
-      setFiles(
-        (previousFiles) =>
-          [
-            ...acceptedFiles.map((file: any) =>
-              Object.assign(file, { preview: URL.createObjectURL(file) }),
-            ),
-          ] as [],
-      );
+    if (acceptedFiles?.length) {
+      setFiles(previousFiles => [
+        ...previousFiles,
+        ...acceptedFiles.map((file: any) =>
+          Object.assign(file, { preview: URL.createObjectURL(file) })
+        )
+      ])
     }
+
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -43,17 +43,14 @@ const Dropzone = ({ className }: { className: any }) => {
   };
 
   async function action() {
-    const file = files[0];
-    if (!file) return;
+    if (!files?.length) return
 
     const formData = new FormData();
-
-    formData.append('file', file);
+    files.forEach(file => formData.append('file', file))
     formData.append('folder', 'next');
 
     fetch('/api/upsert', {
       method: 'POST',
-
       body: formData,
     })
       .then(async (res) => {
@@ -105,7 +102,8 @@ const Dropzone = ({ className }: { className: any }) => {
           {files.map((file) => (
             <li key={file.name} className='relative h-32 rounded-md shadow-lg'>
               <Image
-                src={file.preview}
+                src={folderIcon}
+                priority={true}
                 alt={file.name}
                 width={100}
                 height={100}
