@@ -1,42 +1,31 @@
-# OpenAI & LangChain chatbot with custom context knowledge base
+Citibot - Charlie
+![citibotv2](https://github.com/westies-sg/Citi_Hack_Overflow/assets/77041483/6580c421-1511-43c6-a5c6-98ed0df4fd95)
 
-To learn how to use this repo watch [this tutorial video](https://youtu.be/AMc2A5Abj3M)
+## Description
+Citibot - Charlie is an LLM chatbot designed for Knowledge Management in Banking. The banking sector relies heavily on complex enterprise applications, but the scattered nature of data makes it challenging to access, understand, and integrate information. This fragmentation results in inefficiencies that affect productivity. Citibot - Charlie is our solution to this problem, aiming to centralize application knowledge and provide instant answers on functionality, architecture, and other related aspects, enhancing the efficiency of information retrieval.
 
-This chatbot uses Pinecone index to retrieve relevant information from a custom knowledge base.
-Learn how to create a Pinecone index in [this tutorial](https://youtu.be/k1LrBOtNARk)
+## Technologies Used
+LangChain
+Pinecone
+Typescript
+Openai
+Next.js
+Tailwind
 
-Tech stack: LangChain, Pinecone, Typescript, Openai, Next.js, Tailwind
+## Installation
+Ensure you have Node.js installed on your machine.
+Clone the repository and navigate to the project directory.
+Install the required dependencies.
+Start the Next.js application.
+Usage
+Run the application.
+Visit http://localhost:3000 to interact with the chatbot.
+For backend functionalities, such as uploading data, visit http://localhost:3000/upsert.
 
-## Getting Started
+## Features
+Interactive 24/7 LLM customized data-trained CHATBOT.
+Centralized database with Pinecone for efficient data retrieval.
+User-friendly interface powered by Next.js and Tailwind.
 
-1. Clone the repo
-
-```
-git clone [github https url]
-```
-
-2. Install packages
-
-```
-npm install
-```
-
-3. Set up your `.env` file
-
-- Change `.env.example` into `.env` and fill the neccessary keys.
-- For OPENAI API key visit [openai](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)
-- For Pinecone API key and environment and index names visit [pinecone](https://pinecone.io/) and create your index
-
-4. Run the development server:
-
-```
-npm run dev
-```
-
-## Deploy on Vercel
-
-!! If your Vercel app throws back a timeout error when deployed, the response is taking more than 5s, which is the limit of a free Vercel plan.
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
-
-Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contribution
+If you wish to contribute to the project, please fork the repository and submit a pull request. We appreciate any contributions you might want to make.
