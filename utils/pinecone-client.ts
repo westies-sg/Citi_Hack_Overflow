@@ -5,6 +5,7 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import { OpenAI } from 'langchain/llms/openai';
 import { loadQAStuffChain } from 'langchain/chains';
 import { Document } from 'langchain/document';
+import { v4 as uuidv4 } from 'uuid';
 
 if (
   !process.env.PINECONE_INTER_ENVIRONMENT ||
@@ -111,7 +112,7 @@ export const updatePinecone = async (docs: any) => {
       const chunk = chunks[idx];
 
       const vector = {
-        id: `${txtPath}_${idx}`,
+        id: `${txtPath}_${uuidv4()}`,
         values: embeddingsArrays[idx],
         metadata: {
           ...chunk.metadata,
