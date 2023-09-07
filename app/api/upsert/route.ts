@@ -28,9 +28,13 @@ export async function POST(request: NextRequest) {
     await updatePinecone(docs);
   } catch (err) {
     console.log('error: ', err);
+    return NextResponse.json({
+      message: 'Error in uploading PDF',
+    }, {status:400});
   }
 
   return NextResponse.json({
-    data: 'successfully created index and loaded data into pinecone...',
-  });
+    message: 'Successfully created index and loaded data into pinecone..',
+    
+  },{status:200});
 }

@@ -4,11 +4,21 @@ import Image from 'next/image';
 import { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { ArrowUpTrayIcon, XMarkIcon } from '@heroicons/react/24/solid';
-import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
-import folderIcon from "./PDFIcon.png";
+import folderIcon from "../public/images/PDFIcon.png";
+import {ThreeDots} from 'react-loader-spinner';
+import Swal from 'sweetalert2'
 
 const Dropzone = ({ className }: { className: any }) => {
+  const[loading,setLoading]= useState(false);
+
   const [files, setFiles] = useState<any[]>([]);
+
+  const popUpSuccess = () => {
+    Swal.fire('Success!', 'PDF(s) has been processed.', 'success');
+  }
+  const popUpError = (errorMessage : string) => {
+    Swal.fire('Error!', `${errorMessage}, Failed to process PDF(s).`, 'error');
+  }
 
   const onDrop = useCallback((acceptedFiles: any) => {
     if (acceptedFiles?.length) {
@@ -26,7 +36,7 @@ const Dropzone = ({ className }: { className: any }) => {
     accept: {
       'application/pdf': [],
     },
-    maxFiles: 1,
+    maxFiles: 5,
     onDrop,
   });
 
@@ -38,37 +48,60 @@ const Dropzone = ({ className }: { className: any }) => {
     setFiles((files) => files.filter((file) => file.name !== name));
   };
 
+  const loadIt = () => {
+    setLoading(true);
+  }
+
   const removeAll = () => {
     setFiles([]);
   };
 
   async function action() {
-    if (!files?.length) return
+    if (!files?.length) return;
+    if(loading) return;
 
+    
     const formData = new FormData();
     files.forEach(file => formData.append('file', file))
     formData.append('folder', 'next');
 
-    fetch('/api/upsert', {
+    const res = await fetch('/api/upsert',{
       method: 'POST',
       body: formData,
     })
-      .then(async (res) => {
-        const r = await res.json();
-        console.log(r);
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    console.log(res);
+    console.log(res.status);
+    if(res.status === 200)
+    {
+      const r = await res.json();
+      console.log(r);
+      setLoading(false);
+      popUpSuccess()
+      removeAll();
+    }
+    else if(res.status === 400)
+    {
+      setLoading(false);
+      const {message} = await res.json();
+      popUpError(message);
+    }
+    else {
+      setLoading(false);
+    }
+
   }
 
   return (
-    <form action={action}>
+    <form action={() => {
+      loadIt();
+      action();
+    }}>
       <div
         {...getRootProps({
           className: className,
         })}
       >
+        
         <input {...getInputProps({ name: 'file' })} />
         <div className='flex flex-col items-center justify-center gap-4'>
           <ArrowUpTrayIcon className='h-5 w-5 fill-current' />
@@ -92,9 +125,21 @@ const Dropzone = ({ className }: { className: any }) => {
           </button>
           <button
             type='submit'
-            className='ml-auto mt-1 rounded-md border border-purple-400 px-3 text-[12px] font-bold uppercase tracking-wider text-stone-500 transition-colors hover:bg-purple-400 hover:text-white'
+            className='ml-auto mt-1 rounded-md border border-blue-700 px-3 text-[12px] font-bold uppercase tracking-wider text-stone-500 transition-colors hover:bg-blue-400 hover:text-white'
           >
-            Process
+           
+          {!loading && "Process"}
+        <div >
+          {loading && 
+        <ThreeDots
+        width="60"
+        height="20"
+        color="blue"
+        ariaLabel="loading"
+        wrapperClass='justify-center'
+        />
+        }
+      </div>
           </button>
         </div>
 
