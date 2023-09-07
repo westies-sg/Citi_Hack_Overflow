@@ -5,21 +5,20 @@ import { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { ArrowUpTrayIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
-import folderIcon from "./PDFIcon.png";
+import folderIcon from './PDFIcon.png';
 
 const Dropzone = ({ className }: { className: any }) => {
   const [files, setFiles] = useState<any[]>([]);
 
   const onDrop = useCallback((acceptedFiles: any) => {
     if (acceptedFiles?.length) {
-      setFiles(previousFiles => [
+      setFiles((previousFiles) => [
         ...previousFiles,
         ...acceptedFiles.map((file: any) =>
-          Object.assign(file, { preview: URL.createObjectURL(file) })
-        )
-      ])
+          Object.assign(file, { preview: URL.createObjectURL(file) }),
+        ),
+      ]);
     }
-
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -43,10 +42,10 @@ const Dropzone = ({ className }: { className: any }) => {
   };
 
   async function action() {
-    if (!files?.length) return
+    if (!files?.length) return;
 
     const formData = new FormData();
-    files.forEach(file => formData.append('file', file))
+    files.forEach((file) => formData.append('file', file));
     formData.append('folder', 'next');
 
     fetch('/api/upsert', {
@@ -100,7 +99,7 @@ const Dropzone = ({ className }: { className: any }) => {
 
         <ul className='mt-6 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
           {files.map((file) => (
-            <li key={file.name} className='relative h-32 rounded-md shadow-lg'>
+            <li key={file.name} className='relative h-32 rounded-md'>
               <Image
                 src={folderIcon}
                 priority={true}
