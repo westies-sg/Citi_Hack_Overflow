@@ -417,7 +417,7 @@ export default function Home() {
                                                                         className="flex gap-2"
                                                                     >
                                                                         <img
-                                                                            src="images/citi_bot.jpg "
+                                                                            src="images/mr_charlie.jpg "
                                                                             className="h-24 w-24 rounded-full "
                                                                         />
                                                                         <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">
@@ -425,9 +425,9 @@ export default function Home() {
                                                                                 Mr
                                                                                 Charlie
                                                                             </p>
-                                                                            {
-                                                                                message.content
-                                                                            }
+                                                                            {message.content
+                                                                                ? message.content
+                                                                                : "Sorry! This information is not found in our database"}
                                                                             {message.links && (
                                                                                 <div className="mt-4 flex flex-col gap-2">
                                                                                     <p className="text-xs font-medium text-slate-500">
@@ -501,7 +501,7 @@ export default function Home() {
                                                         className="flex gap-2"
                                                     >
                                                         <img
-                                                            src="images/citi_bot.jpg"
+                                                            src="images/mr_charlie.jpg"
                                                             className="h-24 w-24 rounded-full border-blue"
                                                         />
                                                         <div className="w-auto max-w-xl break-words bg-white rounded-b-xl rounded-tr-xl text-black p-6 shadow-[0_10px_40px_0px_rgba(0,0,0,0.15)]">

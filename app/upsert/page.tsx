@@ -2,8 +2,12 @@
 import Dropzone from "@/components/Dropzone";
 import Link from "next/link";
 import { ChevronLeft } from "react-feather";
+import { useState, useRef, useEffect } from "react";
 
 export default function Upsert() {
+    const [loading, setLoading] = useState<boolean>(false);
+    const [complete, setComplete] = useState<boolean>(false);
+
     return (
         <div className=" mx-40">
             <div className="container mx-auto">
