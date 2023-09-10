@@ -5,6 +5,19 @@ Citibot - Charlie
 | ----------------------------------------------------- | --------------------------------------------- |
 | <img src="./images/CitibotChat.png" alt="CitibotChat" width="700"> |<img src="./images/MrChalieChat.png" alt="MrCharlieChat" width="700">|
 
+
+
+# Citibot - Demo
+| Demo  |   
+| ----------------------------------------------------- | 
+| ![demo](images/demo.gif 'Demo') |
+
+# Citibot - Architecture
+| Demo  |   
+| ----------------------------------------------------- | 
+| ![architecture](images/architecture.jpg 'Demo') |
+
+
 ## Description
 Citibot - Charlie is an LLM chatbot designed for Knowledge Management in Banking. The banking sector relies heavily on complex enterprise applications, but the scattered nature of data makes it challenging to access, understand, and integrate information. This fragmentation results in inefficiencies that affect productivity. Citibot - Charlie is our solution to this problem, aiming to centralize application knowledge and provide instant answers on functionality, architecture, and other related aspects, enhancing the efficiency of information retrieval.
 
